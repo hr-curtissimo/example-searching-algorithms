@@ -1,0 +1,15 @@
+input {
+  text-align: center;
+}
+
+.disabled {
+  background-color: #CCCCCC;
+  color: white;
+}
+
+.visualization-holder {
+  background-color: #dedede;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1em;
+}
