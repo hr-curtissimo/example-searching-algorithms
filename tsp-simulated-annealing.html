@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/site.css">
+  <title>TSP By Simulated Annealing</title>
+</head>
+
+<body>
+  <main class="container">
+    <h1>Simulated annealing: TSP</h1>
+    <form id="customization-form">
+      <div class="row">
+        <div class="three columns">
+          <label for="number-of-points">Number of points</label>
+          <input autofocus class="u-full-width" required min="5" max="200" type="number" id="number-of-points"
+            value="20">
+        </div>
+        <div class="two columns">
+          <label for="start-temp">Start temp</label>
+          <input class="u-full-width" required min="1" step="0.1" type="number" id="start-temp" value="1">
+        </div>
+        <div class="two columns">
+          <label for="end-temp">End temp</label>
+          <input class="u-full-width" required min="0.0001" type="number" id="end-temp" step="any" value="0.0001">
+        </div>
+        <div class="two columns">
+          <label for="decay">Decay constant</label>
+          <input class="u-full-width" required max="0.999" min="0.800" type="number" id="decay" step="0.001"
+            value="0.900">
+        </div>
+        <div class="three columns">
+          <label for="number-of-iterations">Iterations per round</label>
+          <input class="u-full-width" required min="1" type="number" id="number-of-iterations" value="100">
+        </div>
+      </div>
+      <div class="row">
+        <div class="three columns">
+          <label for="strategy">Strategy</label>
+          <select id="strategy" class="u-full-width">
+            <option value="swapTwoNodes">Swap two nodes</option>
+            <option value="reversePath" selected>Reverse path</option>
+          </select>
+        </div>
+        <div class="five columns">
+          <label>Action</label>
+          <button class="button button-primary" id="run">Run with these settings</button>
+        </div>
+      </div>
+    </form>
+    <div class="visualization-holder">
+      <canvas width="800" height="400" class="visualization" id="canvas-surface"></canvas>
+    </div>
+    <div class="row">
+      <div class="three columns"><b style="text-transform: uppercase;">Render controls</b></div>
+      <div class="two columns">
+        <label for="speed">Speed</label>
+        <input class="u-full-width" required min="0" max="1000" step="50" type="range" id="speed" value="1000">
+      </div>
+      <div class="two columns">
+        <label for="hide-comparisons">Comparisons</label>
+        <input type="checkbox" id="hide-comparisons" checked> <label style="display: inline; font-weight: normal;"
+          for="hide-comparisons">Hide</label>
+      </div>
+      <div class="two columns">
+        <label>Action</label>
+        <button class="button" id="pause" type="button">Pause</button>
+      </div>
+    </div>
+  </main>
+</body>
+
+<script type="module" src="js/tsp-simulated-annealing-driver.js"></script>
+<script>
+  const url = new URL(document.location);
+  if (url.origin === 'file://' || url.hostname === 'localhost') {
+    document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
+  }
+</script>
+
+</html>
